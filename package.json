@@ -1,0 +1,38 @@
+{
+  "name": "@mozartspa/nexus-plugin-public",
+  "version": "0.0.0",
+  "description": "Nexus schema plugin to deny access to all queries, mutations and subscriptions except those marked as public",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts-resolve",
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier --write '**/*'",
+    "prepublishOnly": "yarn build"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "prettier-plugin-organize-imports": "^2.1.0",
+    "tsup": "^4.8.4",
+    "typescript": "^4.3.2"
+  }
+}

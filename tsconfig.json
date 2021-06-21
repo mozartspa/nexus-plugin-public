@@ -1,0 +1,21 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true
+  }
+}
