@@ -3,10 +3,12 @@
   "compilerOptions": {
     "lib": ["es2018"],
     "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "sourceMap": true,
     "target": "es2018",
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "jsx": "react",
     "skipLibCheck": true,
     "noUnusedLocals": true,
