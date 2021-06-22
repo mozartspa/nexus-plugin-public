@@ -2,6 +2,9 @@
   "extends": "../tsconfig.json",
   "include": ["."],
   "compilerOptions": {
-    "rootDir": "../"
+    "rootDir": "../",
+    "lib": ["es2018"],
+    "module": "commonjs",
+    "target": "es2018"
   }
 }
