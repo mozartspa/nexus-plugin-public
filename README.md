@@ -1,29 +1,67 @@
-**💛 You can help the author become a full-time open-source maintainer by [sponsoring him on GitHub](https://github.com/sponsors/egoist).**
+# @mozartspa/nexus-plugin-public
 
----
-
-# my-ts-lib
-
-[![npm version](https://badgen.net/npm/v/my-ts-lib)](https://npm.im/my-ts-lib)
-
-## Using this template
-
-- Search `my-ts-lib` and replace it with your custom package name.
-- Search `egoist` and replace it with your name.
-
-Features:
-
-- Package manager [pnpm](https://pnpm.js.org/), safe and fast
-- Release with [semantic-release](https://npm.im/semantic-release)
-- Bundle with [tsup](https://github.com/egoist/tsup)
-- Test with [jest](https://jestjs.io/)
+A Nexus schema plugin to deny access to all queries, mutations and subscriptions except those marked as public.
 
 ## Install
 
 ```bash
-npm i my-ts-lib
+# npm
+npm i @mozartspa/nexus-plugin-public
+
+# yarn
+yarn add @mozartspa/nexus-plugin-public
 ```
 
-## License
+> `nexus` and `graphql` are required, but if you are using Nexus then both of those should already be installed.
 
-MIT &copy; [EGOIST](https://github.com/sponsors/egoist)
+## Usage
+
+Once installed you need to add the plugin to your nexus schema configuration:
+
+```ts
+import { makeSchema } from "nexus"
+import { publicPlugin } from "@mozartspa/nexus-plugin-public"
+
+const schema = makeSchema({
+  // ...
+  plugins: [
+    // ...
+    publicPlugin({
+      isAuthenticated: async (root, args, ctx) => {
+        // Place here your logic.
+        // It should return `true` if authenticated, `false` otherwise.
+        // It can be an async function.
+
+        // In this case we simply check that a user object
+        // is present in the context.
+        return !!ctx.user
+      },
+      defaultError: new Error("Unauthorized!"),
+      // ^--> Optional: errot that is thrown when not authorized.
+    }),
+  ],
+})
+```
+
+Then mark as `public` the queries, mutations and subscriptions that don't need an authenticated user:
+
+```ts
+queryField("news", {
+  type: list("News"),
+  public: true, // <-- marked as public
+  resolve: async (root, args, ctx) => {
+    // ...
+  },
+})
+
+mutationField("login", {
+  type: "LoginOutput",
+  public: true, // <-- marked as public
+  args: {
+    // ...
+  },
+  resolve: async (root, args, ctx) => {
+    // ...
+  },
+})
+```
