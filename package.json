@@ -35,5 +35,21 @@
   "peerDependencies": {
     "graphql": "*",
     "nexus": "^1.0.0"
-  }
+  },
+  "homepage": "https://github.com/mozartspa/nexus-plugin-public",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mozartspa/nexus-plugin-public.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mozartspa/nexus-plugin-public/issues"
+  },
+  "keywords": [
+    "nexus",
+    "schema",
+    "graphql",
+    "permissions",
+    "public",
+    "authorization"
+  ]
 }
