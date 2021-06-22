@@ -91,8 +91,8 @@ describe("publicPlugin", () => {
   it("should forbid access to non-public query, only when unauthenticated", async () => {
     const r1 = await testQuery("me")
     expect(r1.data).toBeNull()
-    expect(r1.errors.length).toEqual(1)
-    expect(r1.errors[0].message).toEqual("Not authorized!")
+    expect(r1.errors?.length).toEqual(1)
+    expect(r1.errors![0].message).toEqual("Not authorized!")
 
     const r2 = await testQuery("me", authenticatedCtx)
     expect(r2.data).not.toBeNull()
@@ -110,8 +110,8 @@ describe("publicPlugin", () => {
   it("should forbid access to non-public mutation, only when unauthenticated", async () => {
     const r1 = await testMutation("updateProfile")
     expect(r1.data).toBeNull()
-    expect(r1.errors.length).toEqual(1)
-    expect(r1.errors[0].message).toEqual("Not authorized!")
+    expect(r1.errors?.length).toEqual(1)
+    expect(r1.errors![0].message).toEqual("Not authorized!")
 
     const r2 = await testMutation("updateProfile", authenticatedCtx)
     expect(r2.data).not.toBeNull()
@@ -163,7 +163,7 @@ describe("publicPlugin", () => {
 
     const { data, errors } = await testQuery("me")
     expect(data).toBeNull()
-    expect(errors.length).toEqual(1)
-    expect(errors[0].message).toEqual("Uh oh!")
+    expect(errors?.length).toEqual(1)
+    expect(errors![0].message).toEqual("Uh oh!")
   })
 })
