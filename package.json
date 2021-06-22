@@ -1,6 +1,6 @@
 {
   "name": "@mozartspa/nexus-plugin-public",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Nexus schema plugin to deny access to all queries, mutations and subscriptions except those marked as public",
   "publishConfig": {
     "access": "public"
