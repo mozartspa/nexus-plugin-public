@@ -1,8 +1,9 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    "target": "es2020",
-    "module": "esnext",
+    "lib": ["es2018"],
+    "module": "commonjs",
+    "target": "es2018",
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
